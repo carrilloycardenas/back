@@ -3,6 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
 
+
 //configuraciones
 app.use(cors());
 app.set('port', process.env.PORT || 3001);
