@@ -14,9 +14,9 @@ router.get("/", async (req,res) => {
     }
 });
 
-router.post('/a', async (req, res) => {
+router.post('/', async (req, res) => {
     const { body } = req
-    res.send(body)
+    console.log(body)
 })
 
 module.exports = router;
