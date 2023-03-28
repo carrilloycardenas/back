@@ -4,7 +4,6 @@ const { models, sequelize } = require('../db/index');
 const { Sequelize } = require ("sequelize");
 const router = Router();
 
-
 //Raiz
 router.get("/", async (req,res) => {
     try{
@@ -15,5 +14,9 @@ router.get("/", async (req,res) => {
     }
 });
 
+router.post('/a', async (req, res) => {
+    const { body } = req
+    res.send(body)
+})
 
 module.exports = router;
