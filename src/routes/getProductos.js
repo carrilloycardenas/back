@@ -8,15 +8,8 @@ const router = Router();
 //Raiz
 router.get("/", async (req,res) => {
     try{
-        let LstProductos = await sequelize.query('SELECT * FROM Productos');
-        if(LstProductos != null){
-            res.json(LstProductos);
-        }else{
-            res.status(404).json({
-                msg: 'no se encontro el articulo'
-            })
-        }
-
+        let LstProductos = await sequelize.query('SELECT * FROM Productos as Productos');
+        res.json(LstProductos[0])
     }catch(error){
         console.log(error);
     }
