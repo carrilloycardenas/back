@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { json } = require('sequelize');
+const { json, JSON } = require('sequelize');
 const { models, sequelize } = require('../db/index');
 const { Sequelize } = require ("sequelize");
 const router = Router();
@@ -16,7 +16,27 @@ router.get("/", async (req,res) => {
 
 router.post('/', async (req, res) => {
     const { body } = req
-    console.log(body)
-})
+    
+    try{
+        let LstProductos = await sequelize.query(`CALL AltaProductos(${body.idProductos}, '${body.Nombre}', '${body.descripcion}', ${body.Stock}, ${body.precioUnitario}, '${body.Color}', 1, 1, 1)`);
+        res.json('Agregado correctamente');
+    }catch(error){
+        console.log(error);
+    }
+});
+
+router.delete('/:id' ,async(req,res)=>{
+    try{
+        const { id } = req.params;
+        await models.Productos.destroy({
+            where : {
+                idProductos : id
+            }
+        });
+        res.json("ok");
+    }catch(error){
+        console.log(error);
+    }
+});
 
 module.exports = router;
