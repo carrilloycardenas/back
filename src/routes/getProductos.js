@@ -63,6 +63,17 @@ router.post('/venta', async (req, res) => {
     }
 });
 
+router.get("/dev", async (req,res) => {
+    try{
+        let LstProductos = await sequelize.query('select * from Registra r ');
+        res.json(LstProductos[0])
+    }catch(error){
+        console.log(error);
+    }
+});
+
+
+
 
 
 module.exports = router;
