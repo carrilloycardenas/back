@@ -13,7 +13,7 @@ router.get("/", async (req,res) => {
         console.log(error);
     }
 });
-
+//agregar
 router.post('/', async (req, res) => {
     const { body } = req
     
