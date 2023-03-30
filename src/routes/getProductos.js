@@ -52,4 +52,17 @@ router.put('/:id', async(req,res)=>{
     }
 });
 
+router.post('/venta', async (req, res) => {
+    const { body } = req
+    
+    try{
+        let LstProductos = await sequelize.query(`CALL registrarVentas('${body.Fecha}', ${body.idProducto}, ${body.Cantidad}), ${body.precio}`);
+        res.json('Agregado correctamente');
+    }catch(error){
+        console.log(error);
+    }
+});
+
+
+
 module.exports = router;
